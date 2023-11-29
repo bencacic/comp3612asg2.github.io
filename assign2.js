@@ -229,7 +229,6 @@ function populateDOMWithTopArtists(artistOccurrences) {
     artistLink.addEventListener("click", function(event) {
       event.preventDefault();
       const artistId = findArtistId(artistName);
-      console.dir(fetchedArtists);
       navigateArtistSongsPage(artistId);
        // Reset genre selects to default
       document.getElementById('genrePick').selectedIndex = 0;
@@ -267,7 +266,6 @@ function navigateArtistSongsPage(artistId) {
  // Set the selected genre ID in the genre pick select element
  const artistPick = document.getElementById('artistPick');
  const selectedOption = Array.from(artistPick.options).find(option => parseInt(option.value) === artistId);
- console.log(artistId);
   if (selectedOption) {
     selectedOption.selected = true;
     //Perform filtering based on the selected artist
@@ -316,8 +314,6 @@ function navigateArtistSongsPage(artistId) {
     if(song.title === songName) {
       document.getElementById('title').innerText = song.title;
       document.getElementById('artist').innerText = song.artist.name;
-
-      console.log(fetchedArtists);
 
       for (let artist of fetchedArtists) {
         if(song.artist.id === artist.id) {
@@ -584,7 +580,6 @@ function createSongDropdown() {
 
   // Clear previous dropdown items
   songDropdown.innerHTML = '';
-  console.dir(addedPlaylistSongs);
   // Create and append dropdown items for each song title
   playListSongs.forEach(song => {
     const songItem = document.createElement('div');
@@ -712,7 +707,6 @@ function addToPlaylist(song) {
  }
 
 creditsButton.addEventListener('mouseover', function () {
-  console.log("I am here");
   creditsPopup.style.display = 'block';
   
   // pop up timer set to close pop up after 5 seconds
@@ -730,7 +724,6 @@ function updateTable( property, buttonElement,x ,id, choice) {
   if(x===1){
   newListSongsinSearch(songObject, property, 0, 0);
   }else{
-    console.log("yes I am here now :((");
     newListSongsinSearch(songObject, property, id, choice);
   }
   const sortingButtons = document.querySelectorAll('.sortingButton');
