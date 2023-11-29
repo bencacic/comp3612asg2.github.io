@@ -1,0 +1,182 @@
+<!--
+  file: index.html
+  names: Ben Cacic, Mohammed Arab
+  class: Comp 3612
+  
+  description: Contains all of the html for assignment 2. 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="assign2.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src=" https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js "></script> <!-- Contains the spider graph -->
+</head>
+<body>
+    <div>   <div class ="header main_header">
+        <div class ="header"><button type ="button" id="homeButton"><h1>Logo</h1></button></div>
+        
+        <div class ="header search"><button type ="button" id="searchButton" class="header_buttons">Search</button></div>
+        <div class ="header"><button class="header_buttons" id="playlistButton">Playlist</button></div>
+        <div class ="header"><button class="header_buttons" id="creditsButton">Credits</button></div>
+        </div>
+       
+        <!-- Home Page  -->
+                
+        <div class="container" id ="homePage">
+            <div class="column">
+                <h2>Top Genres</h2>
+                  <ul id="topGenres">
+                  </ul>
+            </div>
+            <div class="column">
+                <h2>Top Artists</h2>
+               <ul id="topArtists" >
+               </ul>
+            </div>
+            <div class="column">
+                <h2>Most Popular Songs</h2>
+              <ul id="topSongs"></ul>
+            </div>
+        </div>
+       
+        <!-- Search Page  --> 
+        <div class="rowSearch" id="searchPage">
+            <div class="left-colSearch ">
+                <h2 class="h2Search">Basic Song Search</h2>
+
+                <input type="radio" id="Title" name="filter" value="1" />
+                <label for="Title">Title</label>
+                <label for="search"></label>
+                <input
+                  type="text"
+                  id="search"
+                  name="search"
+                  placeholder="Type here"
+                />
+                <br>
+  
+                <input type="radio" id="Artist" name="filter" value="2" />
+                <label for="Artist">Artist</label>
+                <select
+                 id="artistPick"
+                 name="artistPick"
+                  class="align" >
+                 <option value="0">Pick one</option>
+                 </select>
+                <br>
+
+                <input type="radio" id="Genre" name="filter" value="3" />
+                <label for="Genre">Genre</label>
+                
+                <select
+                 id="genrePick"
+                 name="genrePick"
+                  class="align" >
+                 <option value="0">Pick one</option>
+                 </select>
+                <br>
+                
+                <div class ="header clearFilter"><button class="header_buttons" id="clearButton">Clear</button></div>
+                <div class ="header"><button class="header_buttons" id="filterButton">Filter</button></div> 
+
+
+            </div>
+            <div class="right-colSearch">
+                <div class="header addPlaylist">
+                    <button class="header_buttons" id="addPlaylist">Add</button>
+                  </div>
+                  <div class="popup" id="songDropdownPopup">
+                    <div class="popup-content song-container" id="songDropdown"></div>
+                  </div>
+                <h2 class="h2Search" >Browse / Search Results</h2>
+                <div class="table-container"> 
+                    <table class="tableStyle" >
+                    <thead>
+                        <tr>
+                            <th class="titlePadding dashedBorder">Title <button class="sortingButoon"><img src="flipped.png" class="triangle" alt="triangle"></button></th>
+                            <th class="artistPadding dashedBorder">Artist <button class="sortingButoon"><img src="triangle.webp" class="triangle" alt="triangle"></button></th>
+                            <th class="yearPadding dashedBorder">Year <button class="sortingButoon"><img src="triangle.webp" class="triangle" alt="triangle"></button></th>
+                            <th class="genrePadding dashedBorder">Genre <button class="sortingButoon"><img src="triangle.webp" class="triangle" alt="triangle"></button></th>
+                            <th class="popularityPadding dashedBorder">Popularity <button class="sortingButoon"><img src="triangle.webp" class="triangle" alt="triangle"></button></th>
+                        </tr>
+                    </thead>
+                    <tbody id = "listSongs" >
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+       
+        <!-- Song Page --> 
+
+        <div class ="songContainer" id="songPage"> 
+            <div id ="songInfo">
+                    <h2>Song Information</h2>
+                    <p><strong>Title:</strong> <span id="title"></span></p>
+                    <p><strong>Artist:</strong> <span id="artist"></span></p>
+                    <p><strong>Artist Type:</strong> <span id="artistType"></span></p>
+                    <p><strong>Genre:</strong> <span id="genre"></span></p>
+                    <p><strong>Release Year:</strong> <span id="releaseYear"></span></p>
+                    <p><strong>Duration:</strong> <span id="duration"></span></p>
+                    <p><strong>Bpm:</strong> <span id="bpm"></span></p>
+
+                    <canvas id="spiderChart"></canvas>
+                </div>   
+        </div>
+
+        <!-- Playlist Page --> 
+
+            <div class="playlistContainer" id="playlistPage"> 
+                <div class="removeClear">
+                    <div class="header addPlaylist removePlaylist">
+                      <button class="header_buttons" id="removePlaylist">Remove</button>
+                    </div>
+                    <div class="popup" id="songDropdownPopupRemove">
+                      <div class="popup-content song-container" id="songDropdownRemove"></div>
+                    </div>
+                    <div class ="header removePlaylist"><button class="header_buttons" id="clearPlaylist">Clear Playlist</button></div> 
+                  </div>
+                  <h2 class="playlistDetails">Playlist Details</h2>
+                <span id="numberOfSongs">#Songs in list </span> <span id="avreagePopularity">Popularity is </span>
+
+                <table class="tableStyle" id="playlistTable">
+                <thead>
+                    <tr>
+                        <th class="titlePadding dashedBorder">Title <button class="sortingButoon"><img src="flipped.png" class="triangle" alt="triangle"></button></th>
+                        <th class="artistPadding dashedBorder">Artist <button class="sortingButoon"><img src="triangle.webp" class="triangle" alt="triangle"></button></th>
+                        <th class="yearPadding dashedBorder">Year <button class="sortingButoon"><img src="triangle.webp" class="triangle" alt="triangle"></button></th>
+                        <th class="genrePadding dashedBorder">Genre <button class="sortingButoon"><img src="triangle.webp" class="triangle" alt="triangle"></button></th>
+                        <th class="popularityPadding dashedBorder">Popularity <button class="sortingButoon"><img src="triangle.webp" class="triangle" alt="triangle"></button></th>
+                    </tr>
+                </thead>
+                <tbody id = "playListSongs" >
+                </tbody>
+            </table> 
+        </div>
+    </div>
+    </div>
+
+        <!-- Credits Popup -->
+
+        <div id="creditsPopup" class="hidden">
+            <h2>Group Members</h2>
+            <ul>
+              <li>Mohammed Arab</li>
+              <li>Ben Cacic</li>
+            </ul>
+            <p><a href="https://github.com/your-assignment-repo">Hosted on github</a></p>
+          </div>
+
+        <div class ="footer"> 
+            <h3>Footer</h3>
+        </div>
+        <div class ="search">
+        </div>
+    </div>
+</body>
+</html>
