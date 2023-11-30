@@ -382,6 +382,11 @@ function navigateArtistSongsPage(artistId) {
      songPage.style.display = "none";
      playlistPage.style.display = "none";
      clearClick();
+   // Get the radio button by its ID and set it to checked
+    const titleRadio = document.getElementById('Title');
+    if (titleRadio) {
+      titleRadio.checked = true;
+    }
   }
 
   function playlistClick() {
