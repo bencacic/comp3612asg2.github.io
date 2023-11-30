@@ -9,7 +9,7 @@ body{
 }
 .header{
     display: inline-block;
-    background-color: rgb(175, 173, 173);
+   background-color: rgb(175, 173, 173);
 }
 .search{
     margin-left: 700px;
@@ -257,9 +257,7 @@ img {
   
   }
   
-  .popuptext.show {
-    visibility: visible;
-  }
+
 
 .song-item {
     padding: 8px 12px;
